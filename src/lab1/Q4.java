@@ -43,14 +43,14 @@ class Account1 extends Account {
 
     @Override
     public void withdraw(double amount) {
-        setBalance(getBalance() - amount);
+        super.withdraw(amount);
         String description = String.format("%s withdrew %.2f on %s. Balance: %.2f", name, amount, getDateCreated(), getBalance());
         transactions.add(new Transaction('W', amount, getBalance(), description));
     }
 
     @Override
     public void deposit(double amount) {
-        setBalance(getBalance() + amount);
+        super.deposit(amount);
         String description = String.format("%s deposited %.2f on %s. Balance: %.2f", name, amount, getDateCreated(), getBalance());
         transactions.add(new Transaction('D', amount, getBalance(), description));
     }
