@@ -14,7 +14,7 @@ public class Q2 {
 }
 
 class MyGeneric<E> {
-    E e;
+    private E e;
 
     public MyGeneric() {}
 
