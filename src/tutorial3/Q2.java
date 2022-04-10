@@ -48,25 +48,25 @@ interface BidInterface {
     double getACYearlyOperationCost();
 }
 
-interface BidCollectionInterface {
+interface BidCollectionInterface<E extends BidInterface> {
     /**
      * Adds a bid to this collection.
      * @param bid the bid to be added
      */
-    void addBid(BidInterface bid);
+    void addBid(E bid);
 
     /**
      * Returns the bid in this collection with the best yearly cost.
      * @return the bid in this collection with the best yearly cost
      */
-    BidInterface getBestYearlyCoseBid();
+    E getBestYearlyCoseBid();
 
     /**
      * Returns the bid in this collection with the best initial cost.
      * The initial cost will be defined as the unit cost plus the installation cost.
      * @return the bid in this collection with the best initial cost
      */
-    BidInterface getBestInitialCostBid();
+    E getBestInitialCostBid();
 
     /**
      * Clears all of the items from this collection.

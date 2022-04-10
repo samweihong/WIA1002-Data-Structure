@@ -29,16 +29,6 @@ public class ArrayBagDemo {
         System.out.println("bag5, test the method difference of bag1 and bag2:");
         ArrayBag<String> bag5 = (ArrayBag<String>) bag1.difference(bag2);
         displayBag(bag5);
-
-//        ArrayBag<Double> bagg = new ArrayBag<>();
-//        bagg.add(new Byte((byte) 40));
-//        bagg.add(new Integer(50));
-//        ArrayBag<Integer> bagg2 = new ArrayBag<>();
-//        bagg.add(new Double(40.5));
-//        bagg.add(new Integer(50));
-//        displayBag(bagg.union(bagg2));
-//        displayBag(bagg.intersection(bagg2));
-
     }
 
     private static void testAdd(BagInterface<String> aBag, String[] content) {

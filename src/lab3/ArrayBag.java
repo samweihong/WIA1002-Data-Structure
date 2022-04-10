@@ -38,16 +38,15 @@ public class ArrayBag<T> implements BagInterface<T> {
     @Override
     public boolean remove(T anEntry) {
         int index = -1;
-        for (int i = numberOfEntries - 1; i >= 0; i--)
+        for (int i = 0; i < numberOfEntries; i++)
             if (bag[i].equals(anEntry)) {
                 index = i;
                 break;
             }
         if (index == -1) return false;
 
-        for (int i = index; i < numberOfEntries - 1; i++)
-            bag[i] = bag[i + 1];
-        bag[--numberOfEntries] = null;
+        bag[index] = bag[--numberOfEntries];
+        bag[numberOfEntries] = null;
         return true;
     }
 
