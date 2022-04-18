@@ -121,13 +121,9 @@ class LinkedList<E> {
 //
 //        g)
         if (head == null) return null;
-
         E item = head.item;
-        if (head.next == null) {
-            head = tail = null;
-            return item;
-        }
         head = head.next;
+        if (head == null) tail = null;
         return item;
     }
 

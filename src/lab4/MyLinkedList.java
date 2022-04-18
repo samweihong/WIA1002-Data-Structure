@@ -5,13 +5,13 @@ public class MyLinkedList<E> {
     private Node<E> tail;
 
     private static class Node<E> {
-        E item;
+        E element;
         Node<E> next;
 
         public Node() {}
 
         public Node(E element) {
-            this.item = element;
+            this.element = element;
         }
     }
 
@@ -58,7 +58,7 @@ public class MyLinkedList<E> {
 
     public E removeFirst() {
         if (head == null) return null;
-        E item = head.item;
+        E item = head.element;
         head = head.next;
         if (head == null) tail = null;
         return item;
@@ -66,7 +66,7 @@ public class MyLinkedList<E> {
 
     public E removeLast() {
         if (tail == null) return null;
-        E item = tail.item;
+        E item = tail.element;
         if (head == tail) {
             head = tail = null;
             return item;
@@ -89,7 +89,7 @@ public class MyLinkedList<E> {
             Node<E> beforeToRemove = head;
             for (int i = 1; i < index; i++)
                 beforeToRemove = beforeToRemove.next;
-            E item = beforeToRemove.next.item;
+            E item = beforeToRemove.next.element;
             beforeToRemove.next = beforeToRemove.next.next;
             if (beforeToRemove.next == null) tail = beforeToRemove;
 
@@ -106,17 +106,18 @@ public class MyLinkedList<E> {
 
     public boolean contains(E e) {
         for (Node<E> current = head; current != null; current = current.next)
-            if (e.equals(current.item))
+            if (e.equals(current.element))
                 return true;
         return false;
     }
 
     public E get(int index) {
+        if (index < 0) return null;
         try {
             Node<E> current = head;
             while (index-- > 0)
                 current = current.next;
-            return current.item;
+            return current.element;
         } catch (NullPointerException ex) {
             return null;
         }
@@ -124,18 +125,18 @@ public class MyLinkedList<E> {
 
     public E getFirst() {
         if (head == null) return null;
-        return head.item;
+        return head.element;
     }
 
     public E getLast() {
         if (tail == null) return null;
-        return tail.item;
+        return tail.element;
     }
 
     public int indexOf(E e) {
         int i = 0;
         for (Node<E> current = head; current != null; current = current.next) {
-            if (e.equals(current.item))
+            if (e.equals(current.element))
                 return i;
             i++;
         }
@@ -146,7 +147,7 @@ public class MyLinkedList<E> {
         int index = -1;
         int i = 0;
         for (Node<E> current = head; current != null; current = current.next) {
-            if (e.equals(current.item))
+            if (e.equals(current.element))
                 index = i;
             i++;
         }
@@ -160,8 +161,8 @@ public class MyLinkedList<E> {
             while (index-- > 0)
                 current = current.next;
 
-            E temp = current.item;
-            current.item = e;
+            E temp = current.element;
+            current.element = e;
             return temp;
 
         } catch (NullPointerException ex) {
@@ -175,14 +176,14 @@ public class MyLinkedList<E> {
 
     public void print() {
         for (Node<E> current = head; current != null; current = current.next)
-            System.out.print(current.item + " ");
+            System.out.print(current.element + " ");
         System.out.println();
     }
 
     public void reverse() {
         String s = "";
         for (Node<E> current = head; current != null; current = current.next)
-            s = current.item + " " + s;
+            s = current.element + " " + s;
         System.out.println(s);
     }
 }
