@@ -10,7 +10,6 @@ public class Q1 {
 
 class MyStack<E> {
     private ArrayList<E> list = new ArrayList<>();
-    private int size = 0;
 
     public void push(E o) {
         list.add(o);
@@ -38,10 +37,7 @@ class MyStack<E> {
     }
 
     public boolean search(E o) {
-        for (E e : list)
-            if (e.equals(o))
-                return true;
-        return false;
+        return list.contains(o);
     }
 }
 

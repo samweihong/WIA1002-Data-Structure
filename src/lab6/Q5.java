@@ -59,7 +59,7 @@ public class Q5 {
     }
 
     private static boolean isLegalMove(int from, int to) {
-        if (from < 0 || from > 2|| to < 0 || to > 2) return false;
+        if (from < 0 || from > 2 || to < 0 || to > 2) return false;
         if (rods[from].isEmpty()) return false;
         if (!rods[to].isEmpty() && rods[from].peek() > rods[to].peek()) return false;
         return true;
