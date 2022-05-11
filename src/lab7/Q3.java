@@ -64,7 +64,7 @@ public class Q3 {
             } else {
                 totalCapitalGain += share * (price - priceQueue.peek());
                 shareQueue.offer(shareQueue.poll() - share);
-                for (int i = shareQueue.size()-1; i > 1; i--)
+                for (int i = shareQueue.size(); i > 1; i--)
                     shareQueue.offer(shareQueue.poll());
                 share = 0;
             }
