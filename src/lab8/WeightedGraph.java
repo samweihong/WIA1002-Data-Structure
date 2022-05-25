@@ -158,18 +158,16 @@ public class WeightedGraph<T extends Comparable<T>, N extends Comparable<N>> {
     }
 
     public boolean removeEdge(T source, T destination) {
-        if (!hasVertex(source) || !hasVertex(destination)) return false;
+        if (!hasEdge(source, destination)) return false;
 
         for (Vertex<T, N> sourceVertex = head; sourceVertex != null; sourceVertex = sourceVertex.nextVertex)
             if (sourceVertex.vertexInfo.compareTo(source) == 0) {
-                if (sourceVertex.firstEdge == null) return false;
-
                 if (sourceVertex.firstEdge.toVertex.vertexInfo.compareTo(destination) == 0)
                     sourceVertex.firstEdge = sourceVertex.firstEdge.nextEdge;
-
-                for (Edge<T, N> currentEdge = sourceVertex.firstEdge; currentEdge.nextEdge != null; currentEdge = currentEdge.nextEdge)
-                    if (currentEdge.nextEdge.toVertex.vertexInfo.compareTo(destination) == 0)
-                        currentEdge.nextEdge = currentEdge.nextEdge.nextEdge;
+                else
+                    for (Edge<T, N> currentEdge = sourceVertex.firstEdge; currentEdge.nextEdge != null; currentEdge = currentEdge.nextEdge)
+                        if (currentEdge.nextEdge.toVertex.vertexInfo.compareTo(destination) == 0)
+                            currentEdge.nextEdge = currentEdge.nextEdge.nextEdge;
                 return true;
             }
         return false;
