@@ -1,6 +1,7 @@
 package lab11;
 
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST<E extends Comparable<E>> {
@@ -54,33 +55,17 @@ public class BST<E extends Comparable<E>> {
     }
 
     public E minValue() {
-        E min = null;
-        Stack<TreeNode<E>> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode<E> current = stack.pop();
-            if (current == null) continue;
-            if (min == null || current.element.compareTo(min) < 0)
-                min = current.element;
-            stack.push(current.left);
-            stack.push(current.right);
-        }
-        return min;
+        TreeNode<E> min = root;
+        while (min.left != null)
+            min = min.left;
+        return min.element;
     }
 
     public E maxValue() {
-        E max = null;
-        Stack<TreeNode<E>> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode<E> current = stack.pop();
-            if (current == null) continue;
-            if (max == null || current.element.compareTo(max) > 0)
-                max = current.element;
-            stack.push(current.left);
-            stack.push(current.right);
-        }
-        return max;
+        TreeNode<E> max = root;
+        while (max.right != null)
+            max = max.right;
+        return max.element;
     }
 
     public ArrayList<TreeNode<E>> path(E e) {
