@@ -18,7 +18,8 @@ public class Q4 {
         System.out.println("Balance: " + account1.getBalance());
         System.out.println("Transaction History: ");
         for (Transaction t : account1.getTransactions()) {
-            System.out.println(t.getDescription());
+            System.out.printf("%s %s %.2f on %s. Balance: %.2f    Description: %s\n",
+                    account1.getName(), (t.getType() == 'D' ? "deposited" : "withdrew"), t.getAmount(), t.getDate(), t.getBalance(), t.getDescription());
         }
     }
 }
@@ -44,15 +45,13 @@ class Account1 extends Account {
     @Override
     public void withdraw(double amount) {
         super.withdraw(amount);
-        String description = String.format("%s withdrew %.2f on %s. Balance: %.2f", name, amount, getDateCreated(), getBalance());
-        transactions.add(new Transaction('W', amount, getBalance(), description));
+        transactions.add(new Transaction('W', amount, getBalance(), ""));
     }
 
     @Override
     public void deposit(double amount) {
         super.deposit(amount);
-        String description = String.format("%s deposited %.2f on %s. Balance: %.2f", name, amount, getDateCreated(), getBalance());
-        transactions.add(new Transaction('D', amount, getBalance(), description));
+        transactions.add(new Transaction('D', amount, getBalance(), ""));
     }
 }
 

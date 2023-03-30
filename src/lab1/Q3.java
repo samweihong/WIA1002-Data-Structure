@@ -17,12 +17,15 @@ public class Q3 {
 class Account {
     private int id;
     private double balance;
-    private static double annualInterestRate = 0;
+    private static double annualInterestRate;
     private Date dateCreated = new Date();
 
+    static {
+        annualInterestRate = 0;
+    }
+
     public Account() {
-        id = 0;
-        balance = 0;
+        this(0, 0);
     }
 
     public Account(int id, double balance) {
@@ -67,6 +70,7 @@ class Account {
     }
 
     public void withdraw(double amount) {
+        if (amount > balance) throw new IllegalArgumentException("The amount is larger than the balance");
         balance -= amount;
     }
 

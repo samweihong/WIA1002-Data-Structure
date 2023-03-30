@@ -20,9 +20,8 @@ public class Q1 {
             PrintWriter writer = new PrintWriter(new FileOutputStream("src/lab1/SamWeiHong_U2102776.txt", true));
             System.out.println("Add something...");
             writer.println();
-            String line;
-            while (!(line = sc.nextLine()).equals("end"))
-                writer.println(line);
+            while (sc.hasNextLine())
+                writer.println(sc.nextLine());
             writer.close();
 
             sc = new Scanner(new FileInputStream("src/lab1/SamWeiHong_U2102776.txt"));
