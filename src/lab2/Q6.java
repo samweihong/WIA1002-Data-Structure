@@ -2,7 +2,7 @@ package lab2;
 
 public class Q6 {
     public static void main(String[] args) {
-        Integer[][] numbers = {{4,5,6},{1,2,3}};
+        Integer[][] numbers = {{4, 5, 6}, {1, 2, 3}};
         System.out.println(MinMaxTwoDArray.min(numbers));
         System.out.println(MinMaxTwoDArray.max(numbers));
     }
