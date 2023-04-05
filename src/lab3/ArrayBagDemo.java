@@ -17,17 +17,17 @@ public class ArrayBagDemo {
         System.out.println();
 
         System.out.println("bag3, test the method union of bag1 and bag2:");
-        ArrayBag<String> bag3 = (ArrayBag<String>) bag1.union(bag2);
+        BagInterface<String> bag3 = bag1.union(bag2);
         displayBag(bag3);
         System.out.println();
 
         System.out.println("bag4, test the method intersection of bag1 and bag2:");
-        ArrayBag<String> bag4 = (ArrayBag<String>) bag1.intersection(bag2);
+        BagInterface<String> bag4 = bag1.intersection(bag2);
         displayBag(bag4);
         System.out.println();
 
         System.out.println("bag5, test the method difference of bag1 and bag2:");
-        ArrayBag<String> bag5 = (ArrayBag<String>) bag1.difference(bag2);
+        BagInterface<String> bag5 = bag1.difference(bag2);
         displayBag(bag5);
     }
 

@@ -1,9 +1,18 @@
 package lab3;
 
 public class ArrayBag<T> implements BagInterface<T> {
-    private final int DEFAULT_CAPACITY = 25;
-    private T[] bag = (T[]) new Object[DEFAULT_CAPACITY];
+    private T[] bag;
+    private static final int DEFAULT_CAPACITY = 25;
     private int numberOfEntries;
+
+    public ArrayBag() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    @SuppressWarnings("unchecked")
+    public ArrayBag(int capacity) {
+        bag = (T[]) new Object[capacity];
+    }
 
     @Override
     public int getCurrentSize() {
@@ -12,7 +21,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 
     @Override
     public boolean isFull() {
-        return numberOfEntries == DEFAULT_CAPACITY;
+        return numberOfEntries == bag.length;
     }
 
     @Override
@@ -51,26 +60,28 @@ public class ArrayBag<T> implements BagInterface<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void clear() {
-        bag = (T[]) new Object[DEFAULT_CAPACITY];
+        bag = (T[]) new Object[bag.length];
     }
 
     @Override
     public int getFrequencyOf(T anEntry) {
         int freq = 0;
-        for (T item : bag)
-            if (item.equals(anEntry)) freq++;
+        for (int i = 0; i < numberOfEntries; i++)
+            if (bag[i].equals(anEntry)) freq++;
         return freq;
     }
 
     @Override
     public boolean contains(T anEntry) {
-        for (T item : bag)
-            if (item.equals(anEntry)) return true;
+        for (int i = 0; i < numberOfEntries; i++)
+            if (bag[i].equals(anEntry)) return true;
         return false;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] toArray() {
         T[] arr = (T[]) new Object[numberOfEntries];
         System.arraycopy(bag, 0, arr, 0, numberOfEntries);
@@ -79,7 +90,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 
     @Override
     public BagInterface<T> union(BagInterface<? extends T> bag2) {
-        ArrayBag<T> union = new ArrayBag<>();
+        BagInterface<T> union = new ArrayBag<>(getCurrentSize() + bag2.getCurrentSize());
         for (int i = 0; i < numberOfEntries; i++)
             union.add(bag[i]);
         T[] bag2Array = bag2.toArray();
@@ -90,7 +101,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 
     @Override
     public BagInterface<T> intersection(BagInterface<? extends T> bag2) {
-        ArrayBag<T> intersection = new ArrayBag<>();
+        BagInterface<T> intersection = new ArrayBag<>(numberOfEntries);
         T[] bag2Array = bag2.toArray();
         for (int i = 0; i < numberOfEntries; i++) {
             T item = bag[i];
@@ -107,7 +118,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 
     @Override
     public BagInterface<T> difference(BagInterface<? extends T> bag2) {
-        ArrayBag<T> difference = new ArrayBag<>();
+        BagInterface<T> difference = new ArrayBag<>(numberOfEntries);
         for (int i = 0; i < numberOfEntries; i++)
             difference.add(bag[i]);
         T[] bag2Array = bag2.toArray();
