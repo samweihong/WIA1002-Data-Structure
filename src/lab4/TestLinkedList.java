@@ -14,7 +14,7 @@ public class TestLinkedList {
         list.reverse();
 
         // d.
-        int size = list.lastIndexOf(list.getLast())+1;
+        int size = list.lastIndexOf(list.getLast()) + 1;
         System.out.println(size);
 
         // e.

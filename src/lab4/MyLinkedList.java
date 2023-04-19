@@ -8,7 +8,8 @@ public class MyLinkedList<E> {
         E element;
         Node<E> next;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(E element) {
             this.element = element;
@@ -16,8 +17,6 @@ public class MyLinkedList<E> {
     }
 
     public MyLinkedList() {
-        head = null;
-        tail = null;
     }
 
     public void addFirst(E e) {
@@ -50,7 +49,6 @@ public class MyLinkedList<E> {
             toAdd.next = beforeToAdd.next;
             beforeToAdd.next = toAdd;
             if (toAdd.next == null) tail = toAdd;
-
         } catch (NullPointerException ex) {
             addLast(e);
         }
@@ -77,7 +75,6 @@ public class MyLinkedList<E> {
             beforeLast = beforeLast.next;
         beforeLast.next = null;
         tail = beforeLast;
-
         return item;
     }
 
@@ -92,9 +89,7 @@ public class MyLinkedList<E> {
             E item = beforeToRemove.next.element;
             beforeToRemove.next = beforeToRemove.next.next;
             if (beforeToRemove.next == null) tail = beforeToRemove;
-
             return item;
-
         } catch (NullPointerException ex) {
             return null;
         }
@@ -164,7 +159,6 @@ public class MyLinkedList<E> {
             E temp = current.element;
             current.element = e;
             return temp;
-
         } catch (NullPointerException ex) {
             return null;
         }
