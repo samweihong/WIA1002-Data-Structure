@@ -5,8 +5,6 @@ public class SNode<E> {
     SNode<E> next;
 
     public SNode() {
-        item = null;
-        next = null;
     }
 
     public SNode(E item) {

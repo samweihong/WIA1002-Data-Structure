@@ -66,7 +66,8 @@ class LinkedList<E> {
         E item;
         Node<E> next;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(E item) {
             this.item = item;
@@ -90,8 +91,7 @@ class LinkedList<E> {
             if (e.equals(current.next.item)) {
                 current.next = current.next.next;
                 size--;
-            }
-            else
+            } else
                 current = current.next;
         }
         head = dummy.next;

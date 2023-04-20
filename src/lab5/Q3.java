@@ -117,7 +117,7 @@ class DoublyLinkedList<E> {
             throw new IndexOutOfBoundsException();
         if (index == 0)
             return removeFirst();
-        if (index == size-1)
+        if (index == size - 1)
             return removeLast();
 
         Node<E> node = head;

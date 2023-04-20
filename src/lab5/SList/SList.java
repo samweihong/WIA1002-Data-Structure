@@ -17,6 +17,7 @@ public class SList<E> {
         if (head == null) return null;
         E item = head.item;
         head = head.next;
+        if (head == null) tail = null;
         size--;
         return item;
     }
