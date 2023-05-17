@@ -4,11 +4,9 @@ import java.util.Stack;
 
 public class Q4 {
     public static void main(String[] args) {
-        System.out.println(isPalindrome("T_T"));
-        System.out.println(isPalindrome("abcba"));
-        System.out.println(isPalindrome("uvvwu"));
-        System.out.println(isPalindrome("xyzzyx"));
-        System.out.println(isPalindrome("pppqpp"));
+        String[] inputs = {"T_T", "abcba", "uvvwu", "xyzzyx", "pppqpp"};
+        for (String input : inputs)
+            System.out.printf("%s is palindrome: %b\n", input, isPalindrome(input));
     }
 
     public static boolean isPalindrome(String s) {

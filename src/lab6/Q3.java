@@ -7,6 +7,7 @@ public class Q3 {
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i <= 10; i += 2)
             stack.push(i);
+        System.out.println("Stack: " + stack);
         System.out.println("Sum: " + sum(stack));
     }
 
