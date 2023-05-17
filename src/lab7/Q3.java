@@ -15,7 +15,7 @@ Sell 50 shares at $35 each
  */
 
 public class Q3 {
-    static Queue<Integer> shareQueue = new LinkedList<>();
+    static LinkedList<Integer> shareQueue = new LinkedList<>();
     static Queue<Integer> priceQueue = new LinkedList<>();
     static int totalCapitalGain = 0;
 
@@ -24,7 +24,7 @@ public class Q3 {
         while (true) {
             System.out.print("Enter your query (In format 'Buy / Sell x shares at $y each'): ");
             String query = scanner.nextLine();
-            if (query.equals("")) break;
+            if (query.isBlank()) break;
 
             Pattern pattern = Pattern.compile("^(Buy|Sell) (\\d+) shares at \\$(\\d+) each$");
             Matcher matcher = pattern.matcher(query);
@@ -37,7 +37,10 @@ public class Q3 {
             int price = Integer.parseInt(matcher.group(3));
 
             if (isBuying) buy(share, price);
-            else          sell(share, price);
+            else sell(share, price);
+
+            System.out.println("Queue for Share: Queue: " + shareQueue);
+            System.out.println("Queue for Price: Queue: " + priceQueue);
         }
         System.out.println("Final Capital Gain / Loss: " + totalCapitalGain);
     }
@@ -46,8 +49,6 @@ public class Q3 {
         System.out.println("Buying now...");
         shareQueue.offer(share);
         priceQueue.offer(price);
-        System.out.println("Queue for Share: Queue: " + shareQueue);
-        System.out.println("Queue for Price: Queue: " + priceQueue);
     }
 
     private static void sell(int share, int price) {
@@ -70,7 +71,5 @@ public class Q3 {
             }
             System.out.println("Total Capital Gain / Loss: " + totalCapitalGain);
         }
-        System.out.println("Queue for Share: Queue: " + shareQueue);
-        System.out.println("Queue for Price: Queue: " + priceQueue);
     }
 }
